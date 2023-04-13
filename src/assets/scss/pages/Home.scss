@@ -1,0 +1,17 @@
+.greating-container{
+    margin: 80px auto;
+    width: 33vw;
+    height: 33vh;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: lightseagreen;
+    .greating{
+        font-size: 25px;
+        text-align: center;
+        color: #222;
+        padding-block: 15px;
+    }
+    h3{
+        text-align: center;
+    }
+
+}

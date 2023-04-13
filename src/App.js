@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { Home } from './pages/Home';
+import { ContactPage } from './pages/ContactPage';
+import './assets/scss/main.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  state = {
+    selectedRoute:'home',
+   
+  }
+  changeRoute = (type) =>{
+    if(type==='home'){
+      console.log('hi');
+      
+      this.setState({selectedRoute:'home'})
+      console.log('hi',this.state);
+    }
+    else if(type === 'contactPage')
+    this.setState({selectedRoute:'contactPage'})
+  }
+  render() {
+    const {selectedRoute} = this.state
+    return (
+      <section className="main-layout">
+        {(selectedRoute === 'home') ?
+          <>
+          <div className='btns-container'>
+          <button className='btn-route' onClick={()=>this.changeRoute('home')}>Home</button>
+          <button className='btn-route' onClick={()=>this.changeRoute('contactPage')}>ContactPage</button>
+          </div>
+          <Home/>
+          </>:
+          <>
+                <button className='btn-route' onClick={()=>this.changeRoute('home')}>Home</button>
+                <button className='btn-route' onClick={()=>this.changeRoute('contactPage')}>ContactPage</button>
+               <ContactPage/>
+          
+          </>
+
+        
+      
+      }
+
+   
+    </section>
+    )
+  }
 }
-
-export default App;
