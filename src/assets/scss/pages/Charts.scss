@@ -1,0 +1,8 @@
+.charts-container{
+    grid-column:1/-1;
+    height: 20vh;
+    background-color: var(--clr2);
+    .charts-header{
+        text-align: center;
+    }
+}

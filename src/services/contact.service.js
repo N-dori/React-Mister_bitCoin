@@ -143,21 +143,18 @@ function getContacts(filterBy = null) {
     return new Promise((resolve, reject) => {
         const {name,phone,email} = filterBy
         var contactsToReturn=contacts
-        console.log('filterBy in service',name);
-        console.log('filterBy in service',phone);
-        console.log('filterBy in service',email);
+       
         
-        if (filterBy.name) {
-            const regex = new RegExp(filterBy.name, 'i')
+        if (name) {
+            const regex = new RegExp(name, 'i')
             contactsToReturn = contactsToReturn.filter(contact => regex.test(contact.name))
-            console.log('contactsToReturn in name filter',contactsToReturn);
         }
-        if (filterBy.email) {
-            const regex = new RegExp(filterBy.email, 'i')
+        if (email) {
+            const regex = new RegExp(email, 'i')
             contactsToReturn = contactsToReturn.filter(contact => regex.test(contact.email))
         }
-        if (filterBy.phone) {
-            const regex = new RegExp(filterBy.phone, 'i')
+        if (phone) {
+            const regex = new RegExp(phone, 'i')
             contactsToReturn = contactsToReturn.filter(contact => regex.test(contact.phone))
         }
         resolve(sort(contactsToReturn))

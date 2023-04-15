@@ -1,6 +1,14 @@
 import axios from "axios"
+import dataMarketPrice from '../assets/data/market-price.json' 
+import dataConfirmedTransactions from '../assets/data/n-transactions.json' 
+const marketPrice = dataMarketPrice["market-price"]
+const confirmedTransactions =  dataConfirmedTransactions["n-transactions"]
+
 export const bitCoinService={
-    getRate
+    getRate,
+    getMarketPrice,
+    getConfirmedTransactions
+
 }
 async function getRate(){
     try {
@@ -13,7 +21,49 @@ async function getRate(){
 
 }
 }
+getConfirmedTransactions()
+function  getConfirmedTransactions() {
+    const formatedData =[]
+    const options = {  year: 'numeric', month: 'short' };
 
-function getById(carId) {
-    // return storageService.get(STORAGE_KEY, carId)
+    confirmedTransactions.forEach(value =>{
+       const dateTimeFormat3 = new Intl.DateTimeFormat('en-US', options)
+       const date1 = new Date(value.x);
+       const formatedTime= dateTimeFormat3.format(date1)
+
+        const newData=  {
+            name: formatedTime,
+            uv: value.y,
+            "BTC ConfirmedTransactions": value.y,
+            amt: 2400,
+           }
+
+           formatedData.push(newData)
+       })     
+       console.log('confirmedTransactions',formatedData);
+        
+       return formatedData
+}
+
+ function getMarketPrice() {
+     const formatedData =[]
+     const options = {  year: 'numeric', month: 'short' };
+
+        marketPrice.forEach(value =>{
+        const dateTimeFormat3 = new Intl.DateTimeFormat('en-US', options)
+        const date1 = new Date(value.x);
+        const formatedTime= dateTimeFormat3.format(date1)
+
+         const newData=  {
+             name: formatedTime,
+             uv: value.y,
+             "BTC market price": value.y,
+             amt: 2400,
+            }
+
+            formatedData.push(newData)
+        })
+        console.log('formatedData',formatedData);
+return formatedData
+
 }

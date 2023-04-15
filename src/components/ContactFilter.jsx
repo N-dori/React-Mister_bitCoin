@@ -25,15 +25,16 @@ export  class ContactFilter extends Component {
     const {email,name,phone} = this.state.filterBy
     return (
     <section className='form-container'>
-    <form >
-        <label htmlFor='name'>Name</label>
-        <input  value={name} onChange={this.handelChange} type='text' name='name' id='name' />
 
-        <label htmlFor='email'>Email</label>
-        <input value= {email} onChange={this.handelChange} type='text' name='email' id='email' />
+    <form className='filter-form'>
+        <label htmlFor='name'></label>
+        <input  value={name} onChange={this.handelChange} type='text' name='name' id='name' placeholder='name?'/>
 
-        <label htmlFor='phone'>Phone Number</label>
-        <input value={phone} onChange={this.handelChange} type='number' name='phone' id='phone' />
+        <label htmlFor='email'></label>
+        <input value= {email} onChange={this.handelChange} type='text' name='email' id='email' placeholder='email?'/>
+
+        <label htmlFor='phone'></label>
+        <input value={phone} onChange={this.handelChange} type='text' name='phone' id='phone' placeholder='phone?' />
     </form>
     </section>
     )
